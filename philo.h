@@ -13,15 +13,14 @@ typedef struct s_philo
 {
 	int				id;
 	int				meals_eaten;
-	int				left_fork;
-	int				right_fork;
+	int				first_fork;
+	int				second_fork;
 	long long		last_meal;
 	pthread_t		thread;
 	struct s_data	*data;
-	pthread_mutex_t	print_mutex;
-	pthread_mutex_t	*forks;
-	pthread_mutex_t	meal_check;
-
+	// int	first_fork;
+	// int	second_fork;
+	
 }					t_philo;
 
 typedef struct s_data
@@ -37,6 +36,8 @@ typedef struct s_data
 	t_philo			*philos;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print_mutex;
+	pthread_mutex_t	meal_check;
+	pthread_mutex_t	dead_mutex;
 }					t_data;
 
 int init_data(t_data *data);
@@ -48,6 +49,13 @@ int parse_args(int argc, char **argv, t_data *data);
 int clear_data(t_data *data);
 
 long long	ft_get_time(t_data *data);
+
+void print_msg(t_data *data, t_philo *philo, char *msg);
+int assign_forks(t_data *data, t_philo *philo, int philo_count);
+int start_routine(t_data *data, t_philo *philo);
+void *routine(void *arg);
+
+
 
 
 #endif

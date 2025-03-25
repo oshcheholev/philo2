@@ -11,6 +11,8 @@ SRCS = philo.c \
 		init.c \
 		time.c \
 		clean.c \
+		monitor.c \
+		routine.c \
 
 HEAD = philo.h 
 
