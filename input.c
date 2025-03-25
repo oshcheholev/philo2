@@ -29,7 +29,7 @@ int ft_atoi(char *str)
 	return (res);
 }
 
-int parce_meals(int argc, char **argv, t_data *data)
+int parse_meals(int argc, char **argv, t_data *data)
 {
 	if (argc == 6)
 	{

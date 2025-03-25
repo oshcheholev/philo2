@@ -1,4 +1,4 @@
-#include "philo.h";
+#include "philo.h"
 
 int clear_data(t_data *data)
 {
@@ -7,7 +7,7 @@ int clear_data(t_data *data)
 	i = 0;
 	while (i < data->philo_count)
 	{
-		pthread_mutex_destroy(&data->philos[i].forks);
+//		pthread_mutex_destroy(&data->philos[i].forks);
 		pthread_mutex_destroy(&data->philos[i].print_mutex);
 		i++;
 	}

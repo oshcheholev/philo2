@@ -1,6 +1,6 @@
 #include "philo.h"
 
-void init_forks(t_philo *philos, int philo_count)
+int init_forks(t_philo *philos, int philo_count)
 {
 	int i;
 
@@ -21,11 +21,11 @@ int init_mutex(t_philo *philos, int philo_count)
 	i = 0;
 	while (i < philo_count)
 	{
-		if (pthread_mutex_init(&philos[i].forks, NULL))
-		{
-			printf("Error: mutex init failed\n");
-			return (1);
-		}
+		// if (pthread_mutex_init(&philos[i].forks, NULL))
+		// {
+		// 	printf("Error: mutex init failed\n");
+		// 	return (1);
+		// }
 		if (pthread_mutex_init(&philos[i].print_mutex, NULL))
 		{
 			printf("Error: mutex init failed\n");
@@ -68,10 +68,12 @@ int init_philos(t_data *data)
 
 int init_data(t_data *data)
 {
-	int i;
+//	int i;
 
 	data->one_dead = 0;
 	data->all_ate = 0;
 	data->start_time = ft_get_time(data);
+	if(init_philos(data))
+		return (1);
 	return (0);
 }

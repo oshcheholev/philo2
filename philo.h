@@ -6,6 +6,8 @@
 # include <stdio.h>
 # include <sys/time.h>
 # include <limits.h>
+# include <threads.h>
+# include <time.h>
 
 typedef struct s_philo
 {
@@ -16,9 +18,9 @@ typedef struct s_philo
 	long long		last_meal;
 	pthread_t		thread;
 	struct s_data	*data;
-	p_thread_mutex_t	print_mutex;
-	p_thread_mutex_t	*forks;
-	p_thread_mutex_t	meal_check;
+	pthread_mutex_t	print_mutex;
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	meal_check;
 
 }					t_philo;
 
@@ -33,6 +35,20 @@ typedef struct s_data
 	int				meals_count;
 	long long		start_time;
 	t_philo			*philos;
-	p_thread_mutex_t	*forks;
-	p_thread_mutex_t	print_mutex;
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	print_mutex;
 }					t_data;
+
+int init_data(t_data *data);
+
+int monitor(t_data *data);
+long long	ft_usleep(long long milliseconds, t_data *data);
+int parse_args(int argc, char **argv, t_data *data);
+
+int clear_data(t_data *data);
+
+long long	ft_get_time(t_data *data);
+
+
+#endif
+

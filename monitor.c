@@ -1,4 +1,4 @@
-#include "philo.h";
+#include "philo.h"
 
 
 int print_status(t_data *data, int id, char *status)
